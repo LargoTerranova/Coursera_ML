@@ -60,6 +60,7 @@ control_model <- trainControl(method = "cv", number = 2, verboseIter = F)
 model_rf <- train(classe~., method="rf", data=training_set, trControl=control_model)
 model_rf$finalModel
 
+```
 ## 
 ## Call:
 ##  randomForest(x = x, y = y, mtry = param$mtry) 
@@ -75,12 +76,13 @@ model_rf$finalModel
 ## C    0    7 2388    1    0 0.0033388982
 ## D    0    0    9 2243    0 0.0039964476
 ## E    0    1    0    3 2521 0.0015841584
-
+```
 #Prediction
 model_rf_predict    <- predict(model_rf, newdata = testing_set)
 model_rf_predict_cm <- confusionMatrix(model_rf_predict, testing_set$classe)
 model_rf_predict_cm
 
+```
 ## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -112,6 +114,7 @@ model_rf_predict_cm
 ## Detection Rate         0.2845   0.1927   0.1740   0.1628   0.1833
 ## Detection Prevalence   0.2853   0.1930   0.1749   0.1633   0.1835
 ## Balanced Accuracy      0.9994   0.9976   0.9985   0.9966   0.9985
+```
 
 plot(model_rf_predict_cm$table, main= 'Random Forest Prediction: Accuracy = 0.9985')
 
